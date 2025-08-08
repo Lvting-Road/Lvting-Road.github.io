@@ -1,0 +1,74 @@
+body {
+    background-color: #aab86a;  /* 用户的浏览器不支持渐变时显示的内容 */
+    background-image: linear-gradient(to right, #ffcf23, #00afc8, #ffaa52);
+    font-size: 20px;            /* 略微放大字体 */
+}
+
+.block {
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(30px);/* 毛玻璃：先设置半透明，然后让它模糊点 */
+    border-radius: 10px;
+    padding: 10px;
+    transition: background-color 0.5s;
+}
+
+.block:hover {
+    background-color: rgba(200, 200, 200, 0.4); /* 鼠标悬浮时加深颜色 */
+}
+
+/* 下面几个都是用来确定元素的位置的 */
+.block.main {       /* 主页最上面那个框 */
+    position: absolute;
+    left: 15%;
+    top: 1.5vh;
+    width: 70%;
+    height: 10vh;   /* 用 % 无效 */
+    line-height: 50px;
+}
+
+.block.side {
+    height: 90%;
+}
+
+.block.p1 {
+    position: absolute;
+    left: 15%;
+    top: 15vh;
+    width: 30%;
+}
+
+*[xf]:hover {
+    text-decoration: underline; /* 对需要注解的内容进行下划线 */
+}
+
+a[href], *[link] {              /* 没有 href 的 a 视作 span 的代替 */
+    cursor: pointer;            /* 所有链接采用 pointer 鼠标样式（手） */
+}
+
+a[href] {
+    color: #369;            /* 解决强迫症 */
+}
+
+#xf-info {
+    position: absolute;
+    padding: 10px;              /* padding 在 border 内，可以享受到背景颜色 */
+    height: 20px;               /* height 控制背景的颜色；*/
+    line-height: 20px;          /* line-height 则控制一行文本占用的行高 */
+    border-radius: 6px;         /* 圆角效果 */
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px); /* 模糊效果 */
+    transition: opacity 0.5s;   /* 当切换显示/不显示时，给它 0.5s 的动画时间 */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+strong {
+    font-size: 24px;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>杭州地铁车站表</title>
+        <link rel="stylesheet" href="../main.css">
+        <style>
+            .block.side {
+                display: inline-block;
+                vertical-align: top;
+                width: 20%;
+            }
+            li {list-style-type: circle;}
+            #line1 {border: 1px solid #e8384a;}
+            #line2 {border: 1px solid #e17901;}
+            #line3 {border: 1px solid #ffcf23;}
+            #line1 li::marker, #line1 h2 {color: #e8384a;}
+            #line2 li::marker, #line2 h2 {color: #e17901;}
+            #line3 li::marker, #line3 h2 {color: #ffcf23;}
+        </style>
+    </head>
+    <body>
+        <p>注：杭州地铁具体 RGB 配色采用 <a href="https://railmapgen.gitlab.io/?app=rmp">Rail Map Toolkit</a></p>
+        <div class="block side" id="line1">
+            <h2>1&nbsp;号线</h2>
+            <div class="togenerate">
+                <a line="1">湘湖</a>
+                <a line="1,5">滨康路</a>
+                <a line="1">西兴</a>
+                <a line="1">滨和路</a>
+                <a line="1,6">江陵路</a>
+                <a line="1,4">近江</a>
+                <a line="1">婺江路</a>
+                <a line="1,5">城站</a>
+                <a line="1">定安路</a>
+                <a line="1">龙翔桥</a>
+                <a line="1,2">凤起路</a>
+                <a line="1,3">武林广场</a>
+                <a line="1,3,19">西湖文化广场</a>
+                <a line="1,5">打铁关</a>
+                <a line="1">闸弄口</a>
+                <a line="1,4,6,19">火车东站</a>
+                <a line="1,4">彭埠</a>
+                <a line="1">七堡</a>
+                <a line="1">九和路</a>
+                <a line="1">九堡</a>
+                <a line="1,9">客运中心</a>
+                <a line="1">下沙西</a>
+                <a line="1">金沙湖</a>
+                <a line="1">高沙路</a>
+                <a line="1">文泽路</a>
+                <a line="1,8">文海南路</a>
+                <a line="1">云水</a>
+                <a line="1">下沙江滨</a>
+                <a line="1">杭州大会展中心</a>
+                <a line="1">港城大道</a>
+                <a line="1">南阳</a>
+                <a line="1">向阳路</a>
+                <a line="1,7,19">萧山国际机场</a>
+            </div>
+        </div>
+        <div class="block side" id="line2">
+            <h2>2&nbsp;号线</h2>
+            <div class="togenerate">
+                <a line="2">朝阳</a>
+                <a line="2">曹家桥</a>
+                <a line="2">潘水</a>
+                <a line="2">人民路</a>
+                <a line="2,5">人民广场</a>
+                <a line="2">建设一路</a>
+                <a line="2,7">建设三路</a>
+                <a line="2">振宁路</a>
+                <a line="2">飞虹路</a>
+                <a line="2">盈丰路</a>
+                <a line="2,6">钱江世纪城</a>
+                <a line="2,4,9">钱江路</a>
+                <a line="2">庆春广场</a>
+                <a line="2">庆菱路</a>
+                <a line="2,5">建国北路</a>
+                <a line="2">中河北路</a>
+                <a line="2,1">凤起路</a>
+                <a line="2,3">武林门</a>
+                <a line="2,19">沈塘桥</a>
+                <a line="2">下宁桥</a>
+                <a line="2,10">学院路</a>
+                <a line="2">丰潭路</a>
+                <a line="2">文新</a>
+                <a line="2,5">三坝</a>
+                <a line="2">虾龙圩</a>
+                <a line="2">三墩</a>
+                <a line="2">墩祥街</a>
+                <a line="2">金家渡</a>
+                <a line="2">白洋</a>
+                <a line="2">杜甫村</a>
+                <a line="2">良渚</a>
+            </div>
+        </div>
+        <div id="trashbin">
+            <!-- 用于悬浮等效果；一开始没有内容就不显示 -->
+            <div id="xf-info" style="opacity: 0%;"></div>
+        </div>
+        <script>
+            const emptyE = name => document.createElement(name);
+            // for (let main of document.getElementsByClassName('togenerate')) { // 这里采用的方案是将所有站点放在一起然后 js 处理
+            Array.from(document.getElementsByClassName('togenerate')).forEach(function(main, _) {
+                let table = emptyE('table');                // 试过用 <ul>，感觉还是表格好点（毕竟要多列）
+                let thead = emptyE('thead');                // 表头（下同）
+                thead.innerHTML = '<tr><th></th><th>站名</th><th>线路</th></tr>';
+                table.appendChild(thead);                   // 往表格里加入表头
+                let tbody = emptyE('tbody');                // 表身
+                // for (let child of main.children) {       // 遍历每一个站点
+                Array.from(main.children).forEach(function(child, _) {
+                    let name = child.innerHTML;             // 提取站名
+                    let row = emptyE('tr');                 // 创建空行
+                    let lines = child.getAttribute('line');
+                    row.appendChild(emptyE('td'));          // 添加一列，画站点（圆）
+                    if (lines.includes(','))                // 换乘站
+                        row.lastChild.innerHTML = `<a line="${lines}">●</a>`
+                    else                                    // 普通站
+                        row.lastChild.innerHTML = `<a line="${lines}">○</a>`;
+                    row.appendChild(child);                 // 再来一列，直接写上原来的 <a>
+                    row.appendChild(emptyE('td'));          // 再来一列
+                    row.lastChild.innerHTML = lines;        // 写线路
+                    tbody.append(row);                      // 往表身里添加这行
+                })                                          //// 很好奇为什么 for of 还会跳一个显示一个
+                table.appendChild(tbody);                   // 往表格里加入表身
+                let parent = main.parentElement;            // 获取 togenerate 的上级元素
+                parent.removeChild(main);                   // togenerate 不需要了
+                parent.appendChild(table);                  // 展示整理好的表格
+            });                                             //// 一样的问题
+        </script>
+        <script src="../moreattr.js"></script>
+    </body>
+</html>

@@ -6,94 +6,385 @@
         <title>杭州地铁车站表</title>
         <link rel="stylesheet" href="../main.css">
         <style>
+            .container {
+                overflow-x: scroll; /* 横向滚动 */
+                /* overflow-y: scroll; /* 纵向滚动 */
+                white-space: nowrap;/* 行内文本不换行 */
+            }
             .block.side {
                 display: inline-block;
                 vertical-align: top;
-                width: 20%;
+                width: 15%;
             }
             li {list-style-type: circle;}
             #line1 {border: 1px solid #e8384a;}
             #line2 {border: 1px solid #e17901;}
             #line3 {border: 1px solid #ffcf23;}
+            #line4 {border: 1px solid #60c04b;}
+            #line5 {border: 1px solid #00afc8;}
+            #line6 {border: 1px solid #0077cf;}
+            #line7 {border: 1px solid #790f8e;}
+            #line8 {border: 1px solid #a80d4d;}
+            #line9 {border: 1px solid #c45b03;}
+            #line10 {border: 1px solid #daaa00;}
             #line1 li::marker, #line1 h2 {color: #e8384a;}
             #line2 li::marker, #line2 h2 {color: #e17901;}
             #line3 li::marker, #line3 h2 {color: #ffcf23;}
+            #line4 li::marker, #line4 h2 {color: #60c04b;}
+            #line5 li::marker, #line5 h2 {color: #00afc8;}
+            #line6 li::marker, #line6 h2 {color: #0077cf;}
+            #line7 li::marker, #line7 h2 {color: #790f8e;}
+            #line8 li::marker, #line8 h2 {color: #a80d4d;}
+            #line9 li::marker, #line9 h2 {color: #c45b03;}
+            #line10 li::marker, #line10 h2 {color: #daaa00;}
         </style>
     </head>
     <body>
         <p>注：杭州地铁具体 RGB 配色采用 <a href="https://railmapgen.gitlab.io/?app=rmp">Rail Map Toolkit</a></p>
-        <div class="block side" id="line1">
-            <h2>1&nbsp;号线</h2>
-            <div class="togenerate">
-                <a line="1">湘湖</a>
-                <a line="1,5">滨康路</a>
-                <a line="1">西兴</a>
-                <a line="1">滨和路</a>
-                <a line="1,6">江陵路</a>
-                <a line="1,4">近江</a>
-                <a line="1">婺江路</a>
-                <a line="1,5">城站</a>
-                <a line="1">定安路</a>
-                <a line="1">龙翔桥</a>
-                <a line="1,2">凤起路</a>
-                <a line="1,3">武林广场</a>
-                <a line="1,3,19">西湖文化广场</a>
-                <a line="1,5">打铁关</a>
-                <a line="1">闸弄口</a>
-                <a line="1,4,6,19">火车东站</a>
-                <a line="1,4">彭埠</a>
-                <a line="1">七堡</a>
-                <a line="1">九和路</a>
-                <a line="1">九堡</a>
-                <a line="1,9">客运中心</a>
-                <a line="1">下沙西</a>
-                <a line="1">金沙湖</a>
-                <a line="1">高沙路</a>
-                <a line="1">文泽路</a>
-                <a line="1,8">文海南路</a>
-                <a line="1">云水</a>
-                <a line="1">下沙江滨</a>
-                <a line="1">杭州大会展中心</a>
-                <a line="1">港城大道</a>
-                <a line="1">南阳</a>
-                <a line="1">向阳路</a>
-                <a line="1,7,19">萧山国际机场</a>
+        <div class="container">
+            <div class="block side" id="line1">
+                <h2>1&nbsp;号线</h2>
+                <div class="togenerate">
+                    <a line="1">湘湖</a>
+                    <a line="1,5">滨康路</a>
+                    <a line="1">西兴</a>
+                    <a line="1">滨和路</a>
+                    <a line="1,6">江陵路</a>
+                    <a line="1,4">近江</a>
+                    <a line="1">婺江路</a>
+                    <a line="1,5">城站</a>
+                    <a line="1">定安路</a>
+                    <a line="1">龙翔桥</a>
+                    <a line="1,2">凤起路</a>
+                    <a line="1,3">武林广场</a>
+                    <a line="1,3,19">西湖文化广场</a>
+                    <a line="1,5">打铁关</a>
+                    <a line="1">闸弄口</a>
+                    <a line="1,4,6,19">火车东站</a>
+                    <a line="1,4">彭埠</a>
+                    <a line="1">七堡</a>
+                    <a line="1">九和路</a>
+                    <a line="1">九堡</a>
+                    <a line="1,9">客运中心</a>
+                    <a line="1">下沙西</a>
+                    <a line="1">金沙湖</a>
+                    <a line="1">高沙路</a>
+                    <a line="1">文泽路</a>
+                    <a line="1,8">文海南路</a>
+                    <a line="1">云水</a>
+                    <a line="1">下沙江滨</a>
+                    <a line="1">杭州大会展中心</a>
+                    <a line="1">港城大道</a>
+                    <a line="1">南阳</a>
+                    <a line="1">向阳路</a>
+                    <a line="1,7,19">萧山国际机场</a>
+                </div>
             </div>
-        </div>
-        <div class="block side" id="line2">
-            <h2>2&nbsp;号线</h2>
-            <div class="togenerate">
-                <a line="2">朝阳</a>
-                <a line="2">曹家桥</a>
-                <a line="2">潘水</a>
-                <a line="2">人民路</a>
-                <a line="2,5">人民广场</a>
-                <a line="2">建设一路</a>
-                <a line="2,7">建设三路</a>
-                <a line="2">振宁路</a>
-                <a line="2">飞虹路</a>
-                <a line="2">盈丰路</a>
-                <a line="2,6">钱江世纪城</a>
-                <a line="2,4,9">钱江路</a>
-                <a line="2">庆春广场</a>
-                <a line="2">庆菱路</a>
-                <a line="2,5">建国北路</a>
-                <a line="2">中河北路</a>
-                <a line="2,1">凤起路</a>
-                <a line="2,3">武林门</a>
-                <a line="2,19">沈塘桥</a>
-                <a line="2">下宁桥</a>
-                <a line="2,10">学院路</a>
-                <a line="2">丰潭路</a>
-                <a line="2">文新</a>
-                <a line="2,5">三坝</a>
-                <a line="2">虾龙圩</a>
-                <a line="2">三墩</a>
-                <a line="2">墩祥街</a>
-                <a line="2">金家渡</a>
-                <a line="2">白洋</a>
-                <a line="2">杜甫村</a>
-                <a line="2">良渚</a>
+            <div class="block side" id="line2">
+                <h2>2&nbsp;号线</h2>
+                <div class="togenerate">
+                    <a line="2">朝阳</a>
+                    <a line="2">曹家桥</a>
+                    <a line="2">潘水</a>
+                    <a line="2">人民路</a>
+                    <a line="2,5">人民广场</a>
+                    <a line="2">建设一路</a>
+                    <a line="2,7">建设三路</a>
+                    <a line="2">振宁路</a>
+                    <a line="2">飞虹路</a>
+                    <a line="2">盈丰路</a>
+                    <a line="2,6">钱江世纪城</a>
+                    <a line="2,4,9">钱江路</a>
+                    <a line="2">庆春广场</a>
+                    <a line="2">庆菱路</a>
+                    <a line="2,5">建国北路</a>
+                    <a line="2">中河北路</a>
+                    <a line="2,1">凤起路</a>
+                    <a line="2,3">武林门</a>
+                    <a line="2,19">沈塘桥</a>
+                    <a line="2">下宁桥</a>
+                    <a line="2,10">学院路</a>
+                    <a line="2">丰潭路</a>
+                    <a line="2">文新</a>
+                    <a line="2,5">三坝</a>
+                    <a line="2">虾龙圩</a>
+                    <a line="2">三墩</a>
+                    <a line="2">墩祥街</a>
+                    <a line="2,4">金家渡</a>
+                    <a line="2">白洋</a>
+                    <a line="2">杜甫村</a>
+                    <a line="2">良渚</a>
+                </div>
+            </div>
+            <div class="block side" id="line3">
+                <h2>3&nbsp;号线 (吴山前村)</h2>
+                <div class="togenerate">
+                    <a line="3">星桥</a>
+                    <a line="3">黄鹤山</a>
+                    <a line="3">华鹤街</a>
+                    <a line="3">丁桥</a>
+                    <a line="3">桃花湖公园</a>
+                    <a line="3">同协路</a>
+                    <a line="3">华丰路</a>
+                    <a line="3">汽轮广场</a>
+                    <a line="3,4">新天地街</a>
+                    <a line="3,5">善贤</a>
+                    <a line="3">大关</a>
+                    <a line="3">香积寺</a>
+                    <a line="3">潮王路</a>
+                    <a line="3,1,19">西湖文化广场</a>
+                    <a line="3,1">武林广场</a>
+                    <a line="3,2">武林门</a>
+                    <a line="3">黄龙洞</a>
+                    <a line="3,10">黄龙体育中心</a>
+                    <a line="3">古荡</a>
+                    <a line="3">古荡新村</a>
+                    <a line="3">古墩路</a>
+                    <a line="3">东岳</a>
+                    <a line="3">花坞</a>
+                    <a line="3,3">西溪湿地南</a>
+                    <a line="3">洪园</a>
+                    <a line="3">联胜路</a>
+                    <a line="3">高教路</a>
+                    <a line="3">全丰</a>
+                    <a line="暂未开通">创明路</a>
+                    <a line="3,5,16">绿汀路</a>
+                    <a line="3">文一西路</a>
+                    <a line="3">龙舟北路</a>
+                    <a line="3,19">火车西站</a>
+                    <a line="暂未开通">汤家村</a>
+                    <a line="3">吴山前村</a>
+                </div>
+            </div>
+            <div class="block side" id="line3">
+                <h2>3&nbsp;号线 (石马)</h2>
+                <div class="togenerate">
+                    <a line="3">星桥</a>
+                    <a line="1,2,3,4,5,10,19">……略……</a>
+                    <a line="3,3">西溪湿地南</a>
+                    <a line="3">留下</a>
+                    <a line="3">屏峰</a>
+                    <a line="3">小和山</a>
+                    <a line="3">石马</a>
+                </div>
+            </div>
+            <div class="block side" id="line4">
+                <h2>4&nbsp;号线</h2>
+                <div class="togenerate">
+                    <a line="4">池华街</a>
+                    <a line="4,2">金家渡</a>
+                    <a line="4">好运街</a>
+                    <a line="4,10">杭行路</a>
+                    <a line="4">储运路</a>
+                    <a line="4">平安桥</a>
+                    <a line="4">独城生态公园</a>
+                    <a line="4">吴家角港</a>
+                    <a line="4">桃源街</a>
+                    <a line="4">皋亭坝</a>
+                    <a line="4,3">新天地街</a>
+                    <a line="4">华中南路</a>
+                    <a line="4">笕桥老街</a>
+                    <a line="4">黎明</a>
+                    <a line="4">明石路</a>
+                    <a line="4,1">彭埠</a>
+                    <a line="4,1,6,19">火车东站</a>
+                    <a line="4">新风</a>
+                    <a line="4">新塘</a>
+                    <a line="4">景芳</a>
+                    <a line="4,2,9">钱江路</a>
+                    <a line="4">江锦路</a>
+                    <a line="4,7">市民中心</a>
+                    <a line="4">城星路</a>
+                    <a line="4,1">近江</a>
+                    <a line="4">甬江路</a>
+                    <a line="4,5">南星桥</a>
+                    <a line="4">复兴路</a>
+                    <a line="4">水澄桥</a>
+                    <a line="4">联庄</a>
+                    <a line="4,6">中医药大学</a>
+                    <a line="4">杨家墩</a>
+                    <a line="4">浦沿</a>
+                </div>
+            </div>
+            <div class="block side" id="line5">
+                <h2>5&nbsp;号线</h2>
+                <div class="togenerate">
+                    <a line="5">南湖东</a>
+                    <a line="5">金星</a>
+                    <a line="5,3,16">绿汀路</a>
+                    <a line="5">葛巷</a>
+                    <a line="5,19">创景路</a>
+                    <a line="5">良睦路</a>
+                    <a line="5">杭师大仓前</a>
+                    <a line="5">永福</a>
+                    <a line="5">五常</a>
+                    <a line="5">蒋村</a>
+                    <a line="5">浙大紫金港</a>
+                    <a line="5,2">三坝</a>
+                    <a line="5">萍水街</a>
+                    <a line="5,10">和睦</a>
+                    <a line="5">大运河</a>
+                    <a line="5">拱宸桥东</a>
+                    <a line="5,3">善贤</a>
+                    <a line="5">西文街</a>
+                    <a line="5">东新园</a>
+                    <a line="5">杭氧</a>
+                    <a line="5,1">打铁关</a>
+                    <a line="5">宝善桥</a>
+                    <a line="5,2">建国北路</a>
+                    <a line="5">万安桥</a>
+                    <a line="5,1">城站</a>
+                    <a line="5,7">江城路</a>
+                    <a line="5">候潮门</a>
+                    <a line="5,4">南星桥</a>
+                    <a line="5,7">长河</a>
+                    <a line="5">聚才路</a>
+                    <a line="5">江晖路</a>
+                    <a line="5,1">滨康路</a>
+                    <a line="5">博奥路</a>
+                    <a line="5">金鸡路</a>
+                    <a line="5">人民广场</a>
+                    <a line="5">育才北路</a>
+                    <a line="5">通惠中路</a>
+                    <a line="5">火车南站</a>
+                    <a line="5">双桥</a>
+                    <a line="5,SX1">姑娘桥</a>
+                </div>
+            </div>
+            <div class="block side" id="line6">
+                <h2>6&nbsp;号线 (桂花西路)</h2>
+                <div class="togenerate">
+                    <a line="6">枸桔弄</a>
+                    <a line="6,1,4,19">火车东站</a>
+                    <a line="6">元宝塘</a>
+                    <a line="6">昙花庵路</a>
+                    <a line="6,9">三堡</a>
+                    <a line="6">亚运村</a>
+                    <a line="6">丰北</a>
+                    <a line="6,2">钱江世纪城</a>
+                    <a line="6">博览中心</a>
+                    <a line="6,7">奥体中心</a>
+                    <a line="6">星民</a>
+                    <a line="6,1">江陵路</a>
+                    <a line="6">江汉路</a>
+                    <a line="6,5">长河</a>
+                    <a line="6">建业路</a>
+                    <a line="6">诚业路</a>
+                    <a line="6">伟业路</a>
+                    <a line="6,4">中医药大学</a>
+                    <a line="6">西浦路</a>
+                    <a line="6">之江文化中心</a>
+                    <a line="6">枫桦西路</a>
+                    <a line="6,6">美院象山</a>
+                    <a line="6">音乐学院</a>
+                    <a line="6">中村</a>
+                    <a line="6">野生动物园东</a>
+                    <a line="6">银湖</a>
+                    <a line="6">虎啸杏</a>
+                    <a line="6">受降</a>
+                    <a line="6">富阳客运中心</a>
+                    <a line="6">高桥</a>
+                    <a line="6">阳陂湖</a>
+                    <a line="6">公望街</a>
+                    <a line="6">桂花西路</a>
+                </div>
+            </div>
+            <div class="block side" id="line6">
+                <h2>6&nbsp;号线 (双浦)</h2>
+                <div class="togenerate">
+                    <a line="6">枸桔弄</a>
+                    <a line="1,2,4,5,6,7,19">……略……</a>
+                    <a line="6,6">美院象山</a>
+                    <a line="6">霞鸣街</a>
+                    <a line="6">科海路</a>
+                    <a line="6">双浦</a>
+                </div>
+            </div>
+            <div class="block side" id="line7">
+                <h2>7&nbsp;号线</h2>
+                <div class="togenerate">
+                    <a line="7">吴山广场</a>
+                    <a line="7,5">江城路</a>
+                    <a line="7">莫邪塘</a>
+                    <a line="7,9">观音塘</a>
+                    <a line="7,4">市民中心</a>
+                    <a line="7,6">奥体中心</a>
+                    <a line="7">兴议</a>
+                    <a line="7">明星路</a>
+                    <a line="7,2">建设三路</a>
+                    <a line="7">新兴路</a>
+                    <a line="7">新汉路</a>
+                    <a line="7">新街</a>
+                    <a line="7">合欢路</a>
+                    <a line="7">盈中</a>
+                    <a line="7">坎山</a>
+                    <a line="7">新港</a>
+                    <a line="7,1,19">萧山国际机场</a>
+                    <a line="7,19">永盛路</a>
+                    <a line="7">新镇路</a>
+                    <a line="7">义蓬</a>
+                    <a line="7">塘新线</a>
+                    <a line="7,8">青六中路</a>
+                    <a line="7">启成路</a>
+                    <a line="7">江东二路</a>
+                </div>
+            </div>
+            <div class="block side" id="line8">
+                <h2>8&nbsp;号线</h2>
+                <div class="togenerate">
+                    <a line="8,1">文海南路</a>
+                    <a line="8">工商大学云滨</a>
+                    <a line="8">桥头堡</a>
+                    <a line="8">河庄路</a>
+                    <a line="8">青西三路</a>
+                    <a line="8,7">青六中路</a>
+                    <a line="8">仓北村</a>
+                    <a line="8">冯娄村</a>
+                    <a line="8">新湾路</a>
+                </div>
+            </div>
+            <div class="block side" id="line9">
+                <h2>9&nbsp;号线</h2>
+                <div class="togenerate">
+                    <a line="9,7">观音塘</a>
+                    <a line="9">新业路</a>
+                    <a line="9,2,4">钱江路</a>
+                    <a line="9">江河汇</a>
+                    <a line="9,6">三堡</a>
+                    <a line="9,19">御道</a>
+                    <a line="9">五堡</a>
+                    <a line="9">六堡</a>
+                    <a line="9">红普南路</a>
+                    <a line="9">九睦路</a>
+                    <a line="9,1">客运中心</a>
+                    <a line="9">乔司南</a>
+                    <a line="9">乔司</a>
+                    <a line="9">翁梅</a>
+                    <a line="9,HH">临平南高铁站</a>
+                    <a line="9">南苑</a>
+                    <a line="9">临平</a>
+                    <a line="9">邱山大街</a>
+                    <a line="9">荷禹路</a>
+                    <a line="9">五洲路</a>
+                    <a line="9">龙安</a>
+                </div>
+            </div>
+            <div class="block side" id="line10">
+                <h2>10&nbsp;号线</h2>
+                <div class="togenerate">
+                    <a line="10">逸盛路</a>
+                    <a line="10">金德路</a>
+                    <a line="10,4">杭行路</a>
+                    <a line="10">祥园路</a>
+                    <a line="10">渡驾桥</a>
+                    <a line="10">花园岗</a>
+                    <a line="10,5">和睦</a>
+                    <a line="10">北大桥</a>
+                    <a line="10">翠柏路</a>
+                    <a line="10,2">学院路</a>
+                    <a line="10,19">文三路</a>
+                    <a line="10,3">黄龙体育中心</a>
+                </div>
             </div>
         </div>
         <div id="trashbin">
@@ -102,11 +393,12 @@
         </div>
         <script>
             const emptyE = name => document.createElement(name);
-            // for (let main of document.getElementsByClassName('togenerate')) { // 这里采用的方案是将所有站点放在一起然后 js 处理
+            // for (let main of document.getElementsByClassName('togenerate')) {
+                                                            // 这里采用的方案是将所有站点放在一起然后 js 处理
             Array.from(document.getElementsByClassName('togenerate')).forEach(function(main, _) {
                 let table = emptyE('table');                // 试过用 <ul>，感觉还是表格好点（毕竟要多列）
                 let thead = emptyE('thead');                // 表头（下同）
-                thead.innerHTML = '<tr><th></th><th>站名</th><th>线路</th></tr>';
+                thead.innerHTML = '<tr><th></th><th style="width: 60%;">站名</th><th>线路</th></tr>';
                 table.appendChild(thead);                   // 往表格里加入表头
                 let tbody = emptyE('tbody');                // 表身
                 // for (let child of main.children) {       // 遍历每一个站点

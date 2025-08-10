@@ -1,19 +1,21 @@
 body {
-    background-color: #aab86a;  /* 用户的浏览器不支持渐变时显示的内容 */
-    background-image: linear-gradient(to right, #ffcf23, #00afc8, #ffaa52);
+    /* background-color: #aab86a;  /* 用户的浏览器不支持渐变时显示的内容 */
+    /* background-image: linear-gradient(to right, #ffcf23, #00afc8, #ffaa52); */
+    background-image: url('background.jpeg');
+    background-size: cover;
     font-size: 20px;            /* 略微放大字体 */
 }
 
 .block {
-    background-color: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(30px);/* 毛玻璃：先设置半透明，然后让它模糊点 */
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);/* 毛玻璃：先设置半透明，然后让它模糊点 */
     border-radius: 10px;
     padding: 10px;
-    transition: background-color 0.5s;
+    transition: backdrop-filter 0.5s;
 }
 
 .block:hover {
-    background-color: rgba(200, 200, 200, 0.4); /* 鼠标悬浮时加深颜色 */
+    backdrop-filter: blur(50px);
 }
 
 /* 下面几个都是用来确定元素的位置的 */
@@ -26,10 +28,6 @@ body {
     line-height: 50px;
 }
 
-.block.side {
-    height: 90%;
-}
-
 .block.p1 {
     position: absolute;
     left: 15%;
@@ -37,17 +35,22 @@ body {
     width: 30%;
 }
 
-*[xf]:hover {
+[xf]:hover {
     text-decoration: underline; /* 对需要注解的内容进行下划线 */
 }
 
-a[href], *[link] {              /* 没有 href 的 a 视作 span 的代替 */
+a[href], [link] {              /* 没有 href 的 a 视作 span 的代替 */
     cursor: pointer;            /* 所有链接采用 pointer 鼠标样式（手） */
 }
 
 a[href] {
-    color: #369;            /* 解决强迫症 */
+    color: #369;                /* 解决强迫症 */
 }
+
+/* [line] {
+    background-clip: text;                  把背景渐变甩到文字上
+    -webkit-text-fill-color: transparent;   再把文字颜色搞没
+} */ /* 似乎有问题：只显示背景，不知道有没有显示文字（理论上来说这时候文字要么没有要么就和背景颜色完全一样） */
 
 #xf-info {
     position: absolute;

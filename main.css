@@ -36,7 +36,7 @@ body {
 }
 
 [xf]:hover {
-    text-decoration: underline; /* 对需要注解的内容进行下划线 */
+    /* text-decoration: underline; 对需要注解的内容进行下划线 */
 }
 
 a[href], [link] {              /* 没有 href 的 a 视作 span 的代替 */

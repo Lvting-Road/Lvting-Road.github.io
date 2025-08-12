@@ -52,33 +52,6 @@ for (let element of document.querySelectorAll('*[xf]')) {   // xf == 悬浮
     }
 
 // PART 3: line 属性（用于给文字地铁线路的颜色）
+// 下面两个 TODO 已完成！
 // TODO: 把这个改成适用于全国地铁而不是仅仅杭州
 // TODO: 这个和 hangzhou.html 里的功能应该合并到一起而不是分开
-const COLOR_TABLE = {
-    '1': '#e8384a',
-    '2': '#e17901',
-    '3': '#ffcf23',
-    '4': '#60c04b',
-    '5': '#00afc8',
-    '6': '#0077cf',
-    '7': '#790f8e',
-    '8': '#a80d4d',
-    '9': '#c45b03',
-    '10': '#daaa00',
-    '16': '#ffaa52',
-    '19': '#4acbe5',
-    'HH': '#0077c8',
-    'SX1': '#c5003e',
-    'SX2': '#307fe2',
-    '暂未开通': '#808080'
-}
-for (let element of document.querySelectorAll('[line]')) {
-    let style = element.getAttribute('style') || '';// 短路机制（or）：若前面为 false 则直接返回后面
-    style += 'background: linear-gradient(to right';// 注意这里仍然是背景渐变
-    let lines = element.getAttribute('line');       // 类似 line="2,4,9" 这种
-    for (let line of lines.split(','))              // 用 ',' 做为分隔符提取每一条线路
-        style += ', ' + COLOR_TABLE[line];          // 加上一个渐变颜色
-    style += '); -webkit-background-clip: text; ';  // 把背景渐变甩到文字上
-    style += '-webkit-text-fill-color: transparent';// 再把文字颜色搞没
-    element.setAttribute('style', style);           // 把上面那么多代码搞的样式应用上去
-}

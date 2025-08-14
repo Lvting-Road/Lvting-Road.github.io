@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>杭州地铁风格线路图绘制器 V1.0.0</title>
+        <link rel="stylesheet" href="main.css">
+        <style>
+            body {
+                background-image: none;
+                font-family: Arial, SimHei;
+            }
+            button, th {
+                user-select: none;  /* 禁止选中 */
+            }
+            tr>* {
+                text-align: left;
+                padding: 5px;       /* padding 在 border 内 */
+                background-color: #fff;
+                transition: background-color 0.5s;
+            }
+            tr>*:hover {
+                background-color: #ddd;
+            }
+            input {
+                font-family: Arial, SimHei;
+                width: 100px;
+            }
+        </style>
+    </head>
+    <body style="background-color: rgb(255, 255, 255);">
+        <canvas id="cv">
+            如果您在浏览器里看到这行文本，说明您的浏览器版本过旧，不支持 &lt;canvas&gt; 标签。<br>
+            建议下载 Chrome -> https://google.cn/chrome<br>
+            不建议使用 360 安全浏览器、QQ 浏览器、Microsoft Edge 等<a style="display: none;">乱七八糟的</a>浏览器。
+            <!-- 很好你来看这个页面的代码了，有没有笑死 :) -->
+            <!-- 如果你看到了这行文字就说明你在偷看（划掉 代码，代码里看到前几行文字不要紧的，也不影响爬虫（如果你是爬虫的话） -->
+        </canvas>
+        <br>
+        <button accesskey="r" xf="(Alt + R)" onclick="draw()">🔃重新绘制</button>
+        <button accesskey="d" xf="(Alt + D)" onclick="download()">⬇️下载</button>
+        <button accesskey="c" xf="(Alt + C)" onclick="downloadAll()">⏬下载全部</button>
+        <br>
+        <label for="code">线路编号</label>
+        <input type="text" id="code" onkeyup="draw()">
+        <label for="color">线路颜色</label>
+        <input type="color" id="color" onchange="draw()">
+        <label for="current">当前车站</label>
+        <input type="number" id="current" onchange="draw()">
+        <br><br>
+        <button accesskey="a" xf="(Alt + A)" onclick="addLine()">✅提交车站</button>
+        <button accesskey="s" xf="(Alt + S)" onclick="removeLine()">🗑️删除车站</button>
+        <br>
+        <table id="stations">
+            <thead>
+                <tr>
+                    <th>中文站名</th>
+                    <th>英文站名</th>
+                    <th>可换乘线路</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="input">
+                    <td><input type="text" id="input1"></td>
+                    <td><input type="text" id="input2"></td>
+                    <td><input type="text" id="input3"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="trashbin">
+            <!-- 用于悬浮等效果；一开始没有内容就不显示 -->
+            <div id="xf-info" style="opacity: 0%;"></div>
+        </div>
+        <script src="moreattr.js"></script>
+        <script src="canvas1.js"></script>
+        <script>
+            function addLine() {
+                // 将用户输入的内容添加到表格中
+                // 获取到的是 input 的上层元素
+                let container = document.getElementById('input');
+                let innerHTML = '';
+                // 把用户要添加的站点写x到新的 <tr> 里，先计算 <tr> 的 innerHTML
+                for (let td of container.children) {
+                    let input = td.firstChild;
+                    innerHTML += `<td>${input.value}</td>`;
+                    input.value = '';
+                }
+                if (innerHTML.length == (4 + 5) * 3) {
+                    // 什么也没输入！
+                    alert('请输入文本，而不是空白！');
+                    return;
+                }
+                let tr = document.createElement('tr');
+                tr.innerHTML = innerHTML;
+                container.parentElement.insertBefore(tr, container);
+                // 重新选中第一个输入框（中文站名）
+                container
+                    // .firstChild // 第一个输入框所在的 <td>
+                    // .firstChild // <td> 的第一个下层元素 <input>
+                    // 奇怪机制，.firstChild 搞到不知道哪里的文本上去了（浏览器控制台显示 #text）
+                    .children[0].children[0]
+                        .select();
+                // // 将内容保存至 Cookie
+                // document.cookie = `Fri, 31 Dec 9999 23:59:59 GMT`;
+                // 更新线路图
+                draw();
+            }
+            function removeLine() {
+                // 删除车站
+                let tbody = document.getElementById('input').parentElement;
+                let len;
+                if ((len = tbody.children.length) < 2) {
+                    // 由于 length 为整数则 < 2 代表 <= 1，1 是输入框所在的行
+                    alert('没有车站供删除！');
+                    return;
+                }
+                // 获取并删除倒数第二个（倒数第一个为输入框所在的行）
+                tbody.children[len - 2].remove();
+                draw();
+            }
+            document.getElementById('input').setAttribute('onkeypress', 'if(event.code == "Enter") addLine();');
+        </script>
+    </body>
+</html>

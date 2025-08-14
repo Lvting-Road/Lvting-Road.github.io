@@ -15,7 +15,15 @@
         .block.side {
             display: inline-block;
             vertical-align: top;
-            width: 15%;
+            width: max(15%, 200px);
+        }
+        table {
+            border-left: 0;     /* 不想要表格边框 */
+            border-top: 0;
+        }
+        table tr>* {
+            border-right: 0;
+            border-bottom: 0;
         }
         .L1 {border: 2px solid #e8384a;}
         .L2 {border: 2px solid #e17901;}
@@ -35,7 +43,7 @@
     </style>
 </head>
 <body>
-    <p>注：杭州地铁具体 RGB 配色采用 <a href="https://railmapgen.gitlab.io/?app=rmp">Rail Map Toolkit</a></p>
+    <p>注：线路具体 RGB 配色采用 <a href="https://railmapgen.gitlab.io/?app=rmp">Rail Map Toolkit</a></p>
     <div class="container">
         <div class="block side L1">
             <h2>1&nbsp;号线</h2>

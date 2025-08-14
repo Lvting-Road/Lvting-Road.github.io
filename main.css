@@ -1,6 +1,4 @@
 body {
-    /* background-color: #aab86a;  /* 用户的浏览器不支持渐变时显示的内容 */
-    /* background-image: linear-gradient(to right, #ffcf23, #00afc8, #ffaa52); */
     background-image: url('background.jpeg');
     background-size: cover;
     font-size: 20px;            /* 略微放大字体 */
@@ -32,14 +30,17 @@ body {
     position: absolute;
     left: 15%;
     top: 15vh;
-    width: 30%;
+    width: 33%;
 }
 
-[xf]:hover {
-    /* text-decoration: underline; 对需要注解的内容进行下划线 */
+.block.p2 {
+    position: absolute;
+    right: 15%;
+    top: 15vh;
+    width: 33%;
 }
 
-a[href], [link] {              /* 没有 href 的 a 视作 span 的代替 */
+a[href], [link], button {       /* 没有 href 的 a 视作 span 的代替 */
     cursor: pointer;            /* 所有链接采用 pointer 鼠标样式（手） */
 }
 
@@ -72,6 +73,32 @@ h1 {
     font-size: 50px;
 }
 
-strong {
-    font-size: 24px;
+table {                         /* 表格 */
+    border-top: 1px solid gray; /* 让表格整体有左边框和上边框；其他的由每个 <td> 负责 */
+    border-left: 1px solid gray;
+}
+
+table tr>* {                    /* <tr> 的子元素有 <td> 和 <th> */
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+input {                         /* 输入框 */
+    font-size: 20px;            /* 和普通文本一样大 */
+    border: 0px;                /* 没有边框 */
+    background-image: blur(2px);/* 毛玻璃效果 */
+}
+
+button {
+    border: 0px;
+    border-radius: 5px;         /* 圆角 */
+    padding: 10px;
+    font-size: 20px;            /* 和普通文本一样大 */
+    background-color: #4693ac;
+    color: #fff;
+    transition: background-color 0.5s;
+}
+
+button:hover {
+    background-color: #1b576b;
 }

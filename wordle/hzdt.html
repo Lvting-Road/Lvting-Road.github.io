@@ -55,6 +55,7 @@
         </nav>
 
         <main>
+            <p style="color: #666; font-weight: bold;">说明：绿色代表有这个字，且位置正确；黄色代表有这个字，且位置错误；灰色代表没有这个字。</p>
             <p id="xzcd"></p>
             <!-- 我为什么不能直接用 align="center"？它明明更直接，更简单，也能实现我的需求。我为什么一定要用 0 auto？ -->
             <table id="srk" align="center"></table>
@@ -100,17 +101,21 @@
 ];
 
             const ERR = document.getElementById('err');
+            const SUC = document.getElementById('suc');
             // 站名长度  
             let len = 4;
             let correct = '';
-            function newGame(len, stations=PURE_HZ) {
+            function newGame(length, stations=PURE_HZ) {
                 // 选取车站
-                // len：站名长度
+                // length：站名长度
                 // stations：HZ 或 PURE_HZ
+                len = length;
                 correct = '';
                 while (correct.length != len) {
                     correct = stations[Math.floor(Math.random() * stations.length)];
                 }
+                ERR.innerText = '';
+                SUC.innerText = '';
                 // iH innerHTML
                 // 因为直接往 innerHTML 里加会自动解析掉，所以只能放在 iH 里
                 let iH = '请选择站名长度：';
@@ -134,7 +139,7 @@
                 }
                 iH += '<td><button class="green" onclick="submit()">√</button></td>';
                 iH += '<td><button class="red" onclick="qcsr()">⨉</button></td>';
-                iH += '<td><button class="blue" onclick="selectStation()">↻</button></td></tr>\n';
+                iH += `<td><button class="blue" onclick="newGame(${len})">↻</button></td></tr>\n`;
                 // srk 输入框
                 document.getElementById('srk').innerHTML = iH;
             }
@@ -151,36 +156,51 @@
                     return;
                 }
                 ERR.innerText = '';
-                // 通过检查，用户输入正确
+                // 通过检查，用户输入合理
+                let j = 0;
                 for (let tr of document.querySelectorAll('#srk tr')) {
+                    j += 1;
                     if (tr.firstChild.firstChild.value) continue; // 这行已经有站名了，去下一行
                     // 添加站名
                     let i = -1;
+                    let flag = true;
                     for (let input of tr.querySelectorAll('input')) {
                         input.removeAttribute('disabled');
                         let char = name[++i];
+                        // 若整行都是绿的，表明用户猜对
                         if (correct.indexOf(char) + 1)
                             if (correct[i] == char)
                                 // 汉字正确，位置正确，绿色
                                 input.setAttribute('class', 'green');
-                            else
+                            else {
                                 // 汉字正确，位置错误，黄色
+                                flag = false;
                                 input.setAttribute('class', 'yellow');
-                        else
+                            }
+                        else {
                             // 都错了，灰色
+                            flag = false;
                             input.setAttribute('class', 'gray');
+                        }
                         // 显示文字
                         input.value = char;
                         input.setAttribute('readonly', 'readonly');
                     }
+                    if (flag) {
+                        SUC.innerText = '恭喜猜对！'
+                    }
                     break;
                 }
+                if (j == 10)
+                    // 全错
+                    ERR.innerText = `正确答案是 ${correct}`;
             }
 
             // qcsr 清除输入
             function qcsr() {
                 document.getElementById('real').value = '';
                 ERR.innerText = '';
+                SUC.innerText = '';
             }
         </script>
     </body>

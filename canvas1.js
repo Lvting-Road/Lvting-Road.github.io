@@ -111,48 +111,51 @@ if (ctx = cv.getContext('2d')) {
         // 线路颜色
         let current = document.getElementById('current').value;
         // 线路途经站点
-        // let stations = [];
-        // for (let tr of document.querySelectorAll('#stations tbody tr')) {
-        //     // 每个 <tr> 里都有 3 个 <td>
-        //     let station = [];
-        //     for (let td of tr.children)
-        //         station.push(td.innerText);
-        //     stations.push(station);
-        // }
-        // // 最后一行是输入框，无内容
-        // stations.pop();
-        // console.log(stations);
-        let stations = [['朝阳', 'Chaoyang', ''],
-['曹家桥', 'Caojiaqiao', ''],
-['潘水', 'Panshui', ''],
-['人民路', 'Renmin Road', ''],
-['人民广场', `People's Square`, '5'],
-['建设一路', 'Jiansheyi Road', ''],
-['建设三路', 'Jianshesan Road', '7'],
-['振宁路', 'Zhenning Road', ''],
-['飞虹路', 'Feihong Road', ''],
-['盈丰路', 'Yingfeng Road', ''],
-['钱江世纪城', 'Qianjiang Century City', '6'],
-['钱江路', 'Qianjiang Road', '4,9'],
-['庆春广场', 'Qingchun Square', ''],
-['庆菱路', 'Qingling Road', ''],
-['建国北路', 'North Jianguo Road', '5'],
-['中河北路', 'North Zhonghe Road', ''],
-['凤起路', 'Fengqi Road', '1'],
-['武林门', 'Wulinmen', '3'],
-['沈塘桥', 'Shentangqiao', '19'],
-['下宁桥', 'Xianing Bridge', ''],
-['学院路', 'Xueyuan Road', '10'],
-['丰潭路', 'Fengtan Road', ''],
-['文新', 'Wenxin', ''],
-['三坝', 'Sanba', '5'],
-['虾龙圩', 'Xialongwei', ''],
-['三墩', 'Sandun', ''],
-['墩祥街', 'Dunxiang Street', ''],
-['金家渡', 'Jinjiadu', '4'],
-['白洋', 'Baiyang', ''],
-['杜甫村', 'Dufucun', ''],
-['良渚', 'Liangzhu', '']]
+        let stations = [];
+        for (let tr of document.querySelectorAll('#stations tbody tr')) {
+            // 每个 <tr> 里都有 3 个 <td>
+            let station = [];
+            for (let td of tr.children)
+                station.push(td.innerText);
+            stations.push(station);
+        }
+        // 最后一行是输入框，无内容
+        stations.pop();
+        console.log(stations);
+// 还真的有人来翻代码啊
+// -.- OvO
+//         let stations = [['朝阳', 'Chaoyang', ''],
+// ['曹家桥', 'Caojiaqiao', ''],
+// ['潘水', 'Panshui', ''],
+// ['人民路', 'Renmin Road', ''],
+// ['人民广场', `People's Square`, '5'],
+// ['建设一路', 'Jiansheyi Road', ''],
+// ['建设三路', 'Jianshesan Road', '7'],
+// ['振宁路', 'Zhenning Road', ''],
+// ['飞虹路', 'Feihong Road', ''],
+// ['盈丰路', 'Yingfeng Road', ''],
+// ['钱江世纪城', 'Qianjiang Century City', '6'],
+// ['钱江路', 'Qianjiang Road', '4,9'],
+// ['庆春广场', 'Qingchun Square', ''],
+// ['庆菱路', 'Qingling Road', ''],
+// ['建国北路', 'North Jianguo Road', '5'],
+// ['中河北路', 'North Zhonghe Road', ''],
+// ['凤起路', 'Fengqi Road', '1'],
+// ['武林门', 'Wulinmen', '3'],
+// ['沈塘桥', 'Shentangqiao', '19'],
+// ['下宁桥', 'Xianing Bridge', ''],
+// ['学院路', 'Xueyuan Road', '10'],
+// ['古翠路', 'Gucui Road', ''],
+// ['丰潭路', 'Fengtan Road', ''],
+// ['文新', 'Wenxin', ''],
+// ['三坝', 'Sanba', '5'],
+// ['虾龙圩', 'Xialongwei', ''],
+// ['三墩', 'Sandun', ''],
+// ['墩祥街', 'Dunxiang Street', ''],
+// ['金家渡', 'Jinjiadu', '4'],
+// ['白洋', 'Baiyang', ''],
+// ['杜甫村', 'Dufucun', ''],
+// ['良渚', 'Liangzhu', '']]
 
         // 画边框
         drawRoundedRect(5, 5, width - 10, height - 10, 20, 2, color, '#fff');
